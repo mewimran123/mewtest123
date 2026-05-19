@@ -1,40 +1,76 @@
-provider "aws" {
-    region = "us-east-1"
-}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Practice Website</title>
 
+    <style>
+        body {
+            background-color: #1e293b;
+            color: white;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding-top: 50px;
+        }
 
-variable "keyname" {
+        h1 {
+            color: #00ffcc;
+            font-size: 50px;
+            font-family: cursive;
+        }
 
- type = string
+        h2 {
+            color: yellow;
+        }
 
-}
+        p {
+            font-size: 20px;
+            color: #d1d5db;
+        }
 
+        .button {
+            background-color: #00cc66;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            font-size: 18px;
+            border-radius: 10px;
+            cursor: pointer;
+        }
 
+        .button:hover {
+            background-color: #00994d;
+        }
 
-resource "tls_private_key" "rsa" {
+        img {
+            width: 250px;
+            border-radius: 15px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
 
-algorithm = "RSA"
+<body>
 
-rsa_bits = 4096
+    <h1>🚀 Welcome Imran!</h1>
 
-}
+    <h2>My HTML Practice Page</h2>
 
+    <p>I am learning HTML, CSS and JavaScript!</p>
 
+    <!-- GIF Image -->
+    <img src="https://media.giphy.com/media/13HgwGsXF0aiGY/giphy.gif" alt="Coding GIF">
 
-resource "aws_key_pair" "tf-key-pair" {
+    <br><br>
 
-key_name = var.keyname
+    <button class="button" onclick="showMessage()">
+        Click Me
+    </button>
 
-public_key = tls_private_key.rsa.public_key_openssh
+    <script>
+        function showMessage() {
+            alert("Hello Imran! Keep learning HTML 😎");
+        }
+    </script>
 
-}
-
-
-
-resource "local_file" "tf-key" {
-
-content = tls_private_key.rsa.private_key_pem
-
-filename = var.keyname
-
-}
+</body>
+</html>
